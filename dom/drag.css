@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#container {
+  border: solid;
+  width: 332px;
+  height: 332px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hole {
+  background-color: black;
+  border: 1px pink solid;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.item {
+  font-size: 128px;
+  width: 140px;
+  height: 140px;
+  background-color: #c0c0c0;
+  color: #fff;
+  text-align: center;
+}
