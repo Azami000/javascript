@@ -1,18 +1,44 @@
 const searchInput = document.getElementById("searchInput");
-const search = document.getElementById("search");
-const container=document.getElementById("container")
-const loading=document.getElementById("loading")
+const searchButton = document.getElementById("searchButton");
+const container = document.getElementById("container");
+const loading = document.getElementById("loading");
 
-loading.style.display="none"
+loading.style.display = "none";
 
-search.addEventListener("click", () => {
-    loading.style.display="flex"
+searchButton.addEventListener("click", async () => {
+  loading.style.display = "flex";
 
-const {data}=await getGiphyData(input.value)
+  const { data } = await getGiphyData(searchInput.value);
+  console.log(data);
+
+  loading.style.display = "none";
+
+  data.forEach((element) => {
+    const imgTag = `<img src=${element.images.original.url} />`;
+
+    container.innerHTML += imgTag;
+  });
 });
 
+const getGiphyData = async (searchInput) => {
+  const url = `https://api.giphy.com/v1/videos/search?q=${searchInput}&limit=20&api_key=Gc7131jiJuvI7IdN0HZ1D7nh0ow5BU6g`;
+  const result = await fetch(url);
 
+  return result.json();
+};
 
-// https://api.giphy.com/v1/videos/search?q=${variable}&limit=20&api_key=Gc7131jiJuvI7IdN0HZ1D7nh0ow5BU6g
+const render = (data) => {
+  container.innerHTML = "";
 
-const get
+  data.forEach((item) => {
+    container.innerHTML += imgTag;
+  });
+};
+
+render(getGiphyData);
+
+searchInput.addEventListener("keyup", (el) => {
+  const filteredData = imgTag.filter(() => {
+    return;
+  });
+});
